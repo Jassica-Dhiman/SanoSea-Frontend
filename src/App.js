@@ -11,6 +11,7 @@ import CoordinatorDashboard from "./components/Coordinator/JSX/CoordinatorDashbo
 import AuditManagerModal from "./components/AuditManager/JSX/AuditManagerModal.jsx";
 import PortAgentModal from "./components/PortAgent/JSX/PortAgentModal.jsx";
 import AdminBookingDetail from "./components/Admin/JSX/AdminBookingDetail.jsx";
+import SubAdmin from "./components/Admin/JSX/SubAdmin.jsx";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/auth/audit-list" element={<AuditManagerModal />} />
         <Route path="/auth/port-list" element={<PortAgentModal />} />
         <Route path="/auth/booking-detail" element={<AdminBookingDetail />} />
+        <Route path="/auth/sub-admin" element={<SubAdmin />} />
       </Routes>
     </>
   );
