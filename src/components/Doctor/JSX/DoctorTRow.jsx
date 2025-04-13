@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownSelect from "../../DropdownSelect";
 
-const SubAdminRow = ({ name, type, role }) => {
+const DoctorTRow = ({ name, email }) => {
   const handleDropdownChange = (value) => {
     console.log("Selected Status:", value);
   };
@@ -10,16 +10,13 @@ const SubAdminRow = ({ name, type, role }) => {
   return (
     <tr>
       <td>
-        <div className="admin-profile">
+        <div className="doctor-profile">
           <img src="/images/person.jpg" alt="person" />
           <h5>{name}</h5>
         </div>
       </td>
       <td>
-        <p className="admin-type">{type}</p>
-      </td>
-      <td>
-        <p className="admin-role">{role}</p>
+        <p className="doctor-email">{email}</p>
       </td>
       <td>
         <DropdownSelect
@@ -29,13 +26,19 @@ const SubAdminRow = ({ name, type, role }) => {
           onChange={handleDropdownChange}
         />
       </td>
+
       <td>
         <div className="assigned-status-view-detail">
           <Link to="">View Detail</Link>
+        </div>
+      </td>
+      <td>
+        <div className="delete-profile">
+          <button>Delete Profile</button>
         </div>
       </td>
     </tr>
   );
 };
 
-export default SubAdminRow;
+export default DoctorTRow;

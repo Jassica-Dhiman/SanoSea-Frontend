@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import "../Style/BoxModal.css";
+// import "../Style/BoxModal.css";
 import FormField from "../../Form/FormField";
 import DropdownSelect from "../../DropdownSelect";
 
-const BookAppointment = ({ isClosing, onClose }) => {
+const AddDoctor = ({ isClosing, onClose }) => {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
@@ -20,7 +20,7 @@ const BookAppointment = ({ isClosing, onClose }) => {
     <div className={`box-modal ${isClosing ? "closing" : ""}`}>
       <div className="internal-modal">
         <div className="box-heading">
-          <h2>Booking Appointment</h2>
+          <h2>Add New Doctor</h2>
         </div>
 
         <form>
@@ -69,34 +69,12 @@ const BookAppointment = ({ isClosing, onClose }) => {
               />
             </div>
 
-            <div className="col-md-6">
-              <label for="date">Select Date</label>
-              <input
-                type="date"
-                id="date"
-                value={formData.date}
-                onChange={handleChange}
-                className={formData.date ? "filled" : "empty"}
-              />
-            </div>
-
-            <div className="col-md-6">
-              <label for="time">Select Time</label>
-              <input
-                type="time"
-                id="time"
-                value={formData.time}
-                onChange={handleChange}
-                className={formData.time ? "filled" : "empty"}
-              />
-            </div>
-
             <div className="col-12">
-              <div className="form_field">
-                <label>Doctor Speciality</label>
+              <div className="form_field mb-3">
+                <label>Doctor Type</label>
                 <DropdownSelect
                   defaultClass="default-value"
-                  defaultValue="Select Doctor Speciality"
+                  defaultValue="Select Doctor Type"
                   options={[
                     "Emergency Medicine Specialist",
                     "Cardiologist",
@@ -109,33 +87,25 @@ const BookAppointment = ({ isClosing, onClose }) => {
                   //   onChange={handleDropdownChange}
                 />
               </div>
+            </div>
 
-              <div className="mb-3">
-                <label for="exampleFormControlTextarea1">
-                  Mention The Reason Consultation
-                </label>
+            <div className="box-buttons">
+              <button
+                type="button"
+                className="btn cancel-btn"
+                data-bs-dismiss="modal"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
 
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                ></textarea>
-              </div>
-
-              <div className="box-buttons">
-                <button
-                  type="button"
-                  className="btn cancel-btn"
-                  data-bs-dismiss="modal"
-                  onClick={onClose}
-                >
-                  Cancel
-                </button>
-
-                <button type="button" className="btn save-btn">
-                  Save
-                </button>
-              </div>
+              <button
+                type="button"
+                className="btn save-btn"
+                style={{ width: "120px" }}
+              >
+                Add Doctor
+              </button>
             </div>
           </div>
         </form>
@@ -144,4 +114,4 @@ const BookAppointment = ({ isClosing, onClose }) => {
   );
 };
 
-export default BookAppointment;
+export default AddDoctor;

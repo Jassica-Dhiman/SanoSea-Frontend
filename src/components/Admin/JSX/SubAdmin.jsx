@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import TBox from "../../TBox";
 import TopNav from "../../Navbar/JSX/TopNav";
 import SideNav from "../../Navbar/JSX/SideNav";
 import SubAdminRow from "./SubAdminRow";
 import "../Style/SubAdmin.css";
+import AddSubAdmin from "./AddSubAdmin";
 
 const SubAdmin = () => {
+  const [isBoxOpen, setBoxOpen] = useState(false); // State to control boxmodal
+  const [isClosing, setClosing] = useState(false); // State to control closing animation
+
+  const handleOpenBox = () => {
+    setBoxOpen(true); // Open box modal
+    setClosing(false); // Reset closing state
+    document.body.classList.add("overflow-hidden"); // Prevent background scrolling
+  };
+
+  const handleCloseBox = () => {
+    document.body.classList.remove("overflow-hidden"); // Restore scrolling
+    setClosing(true); // Trigger closing animation
+    setTimeout(() => setBoxOpen(false), 400); // Wait for animation before removing modal
+    // setBoxOpen(false); // Close boxmodal
+  };
   return (
     <>
       <TopNav />
@@ -14,7 +30,7 @@ const SubAdmin = () => {
         <section id="sub-admin-section">
           <div className="sub-admin-header">
             <h4>Sub-Admin</h4>
-            <button>
+            <button onClick={handleOpenBox}>
               <img src="/images/icon-plus-white.png" alt="icon-plus" />
               Add Sub Admin
             </button>
@@ -67,6 +83,12 @@ const SubAdmin = () => {
             </table>
           </div>
         </section>
+
+        {isBoxOpen && (
+          <div className="box-overlay">
+            <AddSubAdmin isClosing={isClosing} onClose={handleCloseBox} />
+          </div>
+        )}
       </main>
     </>
   );

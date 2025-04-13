@@ -12,6 +12,7 @@ import AuditManagerModal from "./components/AuditManager/JSX/AuditManagerModal.j
 import PortAgentModal from "./components/PortAgent/JSX/PortAgentModal.jsx";
 import AdminBookingDetail from "./components/Admin/JSX/AdminBookingDetail.jsx";
 import SubAdmin from "./components/Admin/JSX/SubAdmin.jsx";
+import Doctor from "./components/Doctor/JSX/Doctor.jsx";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/auth/port-list" element={<PortAgentModal />} />
         <Route path="/auth/booking-detail" element={<AdminBookingDetail />} />
         <Route path="/auth/sub-admin" element={<SubAdmin />} />
+        <Route path="/auth/doctor" element={<Doctor />} />
       </Routes>
     </>
   );
