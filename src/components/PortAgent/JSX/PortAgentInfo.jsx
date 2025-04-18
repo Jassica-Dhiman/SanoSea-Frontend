@@ -1,4 +1,5 @@
 import React from "react";
+
 import LabeledIconText from "../../LabeledIconText";
 import CabLocation from "../../CabLocation";
 import BookingDetailItem from "./BookingDetailItem";
@@ -18,6 +19,7 @@ const PortAgentInfo = () => {
           value="9887767890"
         />
       </div>
+
       <div className="port-agent-info-cab">
         <div className="row">
           <div className="col-3">
@@ -29,6 +31,7 @@ const PortAgentInfo = () => {
               <CabLocation address="M. Arif, G. Wang, T.Peng" type="Drop Off" />
             </div>
           </div>
+
           <div className="col-6">
             <div className="port-agent-booking-detail">
               <div className="row">
@@ -39,6 +42,7 @@ const PortAgentInfo = () => {
                     cabDetailValue="11:40 AM"
                   />
                 </div>
+
                 <div className="col-4 ">
                   <BookingDetailItem
                     iconClass="fa-solid fa-car-side"
@@ -46,6 +50,7 @@ const PortAgentInfo = () => {
                     cabDetailValue="8765456769"
                   />
                 </div>
+
                 <div className="col-4 ">
                   <BookingDetailItem
                     imgSrc="/images/icons8-calendar-30.png"
@@ -61,12 +66,14 @@ const PortAgentInfo = () => {
                     cabDetailValue="2:40 AM"
                   />
                 </div>
+
                 <div className="col-4 ">
                   <BookingDetailItem
                     cabDetailHeader="Driver Name"
                     cabDetailValue="Alfredo Carder"
                   />
                 </div>
+
                 <div className="col-4 ">
                   <BookingDetailItem
                     iconClass="fa-solid fa-phone"
@@ -77,6 +84,7 @@ const PortAgentInfo = () => {
               </div>
             </div>
           </div>
+
           <div className="col-3">
             <div className="download-info-button">
               <button>

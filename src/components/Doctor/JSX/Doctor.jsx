@@ -5,12 +5,13 @@ import SideNav from "../../Navbar/JSX/SideNav";
 
 // import "../Style/SubAdmin.css";
 
-import DoctorTRow from "./DoctorTRow";
 import AddDoctor from "./AddDoctor";
+import DoctorTRow from "./DoctorTRow";
 
 const Doctor = () => {
   const [isBoxOpen, setBoxOpen] = useState(false); // State to control boxmodal
   const [isClosing, setClosing] = useState(false); // State to control closing animation
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
 
   const handleOpenBox = () => {
     setBoxOpen(true); // Open box modal
@@ -32,9 +33,11 @@ const Doctor = () => {
         <section id="sub-admin-section">
           <div className="sub-admin-header">
             <h4>Doctor</h4>
-            <div>
-              <button>search</button>
-              <button onClick={handleOpenBox}>
+            <div className="doctor-btn">
+              <button className="doctor-search-btn">
+                <i className="fa-solid fa-search"></i>
+              </button>
+              <button className="add-user-btn" onClick={handleOpenBox}>
                 <img src="/images/icon-plus-white.png" alt="icon-plus" />
                 Add New Doctor
               </button>
@@ -53,30 +56,23 @@ const Doctor = () => {
                 </tr>
               </thead>
               <tbody>
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
-                <DoctorTRow
-                  name="Jaydon Bartor"
-                  email="jaydonbartor@gmail.com"
-                />
+                {[
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                  { name: "Jaydon Bartor", email: "jaydonbartor@gmail.com" },
+                ].map((doctor, index) => (
+                  <DoctorTRow
+                    key={index}
+                    name={doctor.name}
+                    email={doctor.email}
+                    index={index}
+                    activeDropdownIndex={activeDropdownIndex}
+                    setActiveDropdownIndex={setActiveDropdownIndex}
+                  />
+                ))}
               </tbody>
             </table>
           </div>

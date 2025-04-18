@@ -9,7 +9,8 @@ import AuthActionSection from "./AuthActionSection";
 
 const defaultUserInfo = {
   profilePhoto: null,
-  fullName: "",
+  firstName: "",
+  lastName: "",
   phoneNumber: "",
   email: "",
   password: "",
@@ -19,6 +20,7 @@ const defaultUserInfo = {
 const validateUserInfo = ({
   profilePhoto,
   firstName,
+  lastName,
   phoneNumber,
   email,
   password,
@@ -28,8 +30,8 @@ const validateUserInfo = ({
   if (profilePhoto && !profilePhoto.type?.startsWith("image"))
     return { error: "Invalid image/Profile photo file!" };
 
-  if (!firstName.trim()) return { ok: false, error: "Full name is missing!" };
-  if (!isValidName.test(firstName))
+  if (!firstName.trim()) return { ok: false, error: "First name is missing!" };
+  if (!isValidName.test(firstName) || !isValidName.test(lastName))
     return { ok: false, error: "Invalid name!" };
 
   if (!phoneNumber.trim())
@@ -64,7 +66,7 @@ const RegisterForm = ({ initialState, className, setResetForm }) => {
     setIsSmallScreen(window.innerWidth <= 981);
   };
 
-  const updateProfilePhoto = (file) => {
+  const updateProfilePhoto = file => {
     const url = URL.createObjectURL(file);
     setSelectedProfilePhoto(url);
   };
@@ -82,7 +84,7 @@ const RegisterForm = ({ initialState, className, setResetForm }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     setBusy(true);
 
     e.preventDefault();
@@ -94,7 +96,7 @@ const RegisterForm = ({ initialState, className, setResetForm }) => {
     }
 
     const formData = new FormData();
-    Object.keys(userInfo).forEach((key) => {
+    Object.keys(userInfo).forEach(key => {
       if (userInfo[key]) {
         formData.append(key, userInfo[key]);
       }
@@ -140,7 +142,7 @@ const RegisterForm = ({ initialState, className, setResetForm }) => {
           landingPage = "/auth/general-physician-dashboard";
           break;
         case "Admin":
-          landingPage = "/auth/admin-dashboard";
+          landingPage = "/auth/coordinator-dashboard";
           break;
         case "Audit Manager":
           landingPage = "/auth/audit-manager-dashboard";

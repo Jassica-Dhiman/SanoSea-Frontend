@@ -72,13 +72,14 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #f1f1f1;
-  padding: 15px 15px;
+  padding: 15px;
+  align-items: center;
 }
 
 .all-booking-table h5 {
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .all-booking-date {
@@ -120,9 +121,7 @@
   text-decoration: none;
   color: black;
   background-color: #bae8e8;
-  border-radius: 3px;
   margin: 0px;
-  font-size: 12px;
   padding: 9px 20px;
   border-radius: 5px;
   font-size: 12px;
@@ -158,7 +157,6 @@ tbody tr {
 .assigned-flex-wrapper {
   display: flex;
   align-items: center;
-  padding-left: 18px;
 }
 
 .assigned-person-img {
@@ -236,6 +234,7 @@ tbody tr {
   color: #fc62bf;
   border: 1px solid #fc62bf;
 }
+
 .assigned-status-download-report {
   padding: 2px 5px;
   border-radius: 3px;
@@ -267,4 +266,16 @@ tbody tr {
 
 .assigned-status-view-detail a:hover {
   text-decoration: underline;
+}
+
+.add-cab-details button {
+  background-color: transparent;
+  color: rgb(13, 117, 158);
+  border: 1px solid rgb(54, 163, 206);
+  padding: 0px 5px;
+  border-radius: 3px;
+  font-weight: 500;
+  display: block;
+
+  text-align: center;
 }

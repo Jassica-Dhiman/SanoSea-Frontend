@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import "../Style/BoxModal.css";
 import FormField from "../../Form/FormField";
 import DropdownSelect from "../../DropdownSelect";
+
+import "../Style/BoxModal.css";
 
 const BookAppointment = ({ isClosing, onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,10 +12,25 @@ const BookAppointment = ({ isClosing, onClose }) => {
     doctorSpeciality: "",
   });
 
-  const handleChange = (e) => {
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(null); // Track dropdown globally
+
+  const handleChange = e => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (!event.target.closest(".select-menu")) {
+        setActiveDropdownIndex(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={`box-modal ${isClosing ? "closing" : ""}`}>
@@ -93,9 +109,10 @@ const BookAppointment = ({ isClosing, onClose }) => {
 
             <div className="col-12">
               <div className="form_field">
-                <label>Doctor Speciality</label>
+                <label for="doctorSpeciality">Doctor Speciality</label>
                 <DropdownSelect
-                  defaultClass="default-value"
+                  id="doctorSpeciality"
+                  // defaultClass="default-value"
                   defaultValue="Select Doctor Speciality"
                   options={[
                     "Emergency Medicine Specialist",
@@ -105,11 +122,16 @@ const BookAppointment = ({ isClosing, onClose }) => {
                     "Neurologist",
                     "Gastroenterologist",
                   ]}
+                  index={0} // Unique index for tracking
+                  activeDropdownIndex={activeDropdownIndex}
+                  setActiveDropdownIndex={setActiveDropdownIndex}
                   //   includeLabel={true} // shows "Select State" label
                   //   onChange={handleDropdownChange}
                 />
               </div>
+            </div>
 
+            <div className="col-12">
               <div className="mb-3">
                 <label for="exampleFormControlTextarea1">
                   Mention The Reason Consultation
@@ -121,7 +143,9 @@ const BookAppointment = ({ isClosing, onClose }) => {
                   rows="3"
                 ></textarea>
               </div>
+            </div>
 
+            <div className="col-12">
               <div className="box-buttons">
                 <button
                   type="button"
