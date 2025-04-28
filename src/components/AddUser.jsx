@@ -37,7 +37,7 @@ const validateSubAdminInfo = ({ firstName, lastName, phoneNumber, email }) => {
   return { ok: true };
 };
 
-const AddSubAdmin = ({ isClosing, onClose }) => {
+const AddUser = ({ isClosing, onClose }) => {
   const [subAdminInfo, setSubAdminInfo] = useState({ ...defaultSubAdminInfo });
   const [busy, setBusy] = useState(false);
   const [activeDropdownIndex, setActiveDropdownIndex] = useState(null); // Tracks dropdown globally
@@ -47,16 +47,16 @@ const AddSubAdmin = ({ isClosing, onClose }) => {
   // Handles input field changes
   const handleChange = ({ target }) => {
     const { value, name } = target;
-    setSubAdminInfo(prev => ({ ...prev, [name]: value }));
+    setSubAdminInfo((prev) => ({ ...prev, [name]: value }));
   };
 
   // Handles dropdown role selection
-  const handleDropdownChange = selectedRole => {
-    setSubAdminInfo(prev => ({ ...prev, roleName: selectedRole }));
+  const handleDropdownChange = (selectedRole) => {
+    setSubAdminInfo((prev) => ({ ...prev, roleName: selectedRole }));
   };
 
   // Handles form submission
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate before making API calls
@@ -87,7 +87,7 @@ const AddSubAdmin = ({ isClosing, onClose }) => {
 
   // Closes dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = event => {
+    const handleClickOutside = (event) => {
       if (!event.target.closest(".select-menu")) {
         setActiveDropdownIndex(null);
       }
@@ -203,4 +203,4 @@ const AddSubAdmin = ({ isClosing, onClose }) => {
   );
 };
 
-export default AddSubAdmin;
+export default AddUser;

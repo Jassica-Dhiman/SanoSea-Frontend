@@ -1,24 +1,16 @@
+import { catchError, getToken } from "../utils/helper";
 import client from "./client";
 
-export const addSubAdmin = async (subAdminInfo) => {
+export const addSubAdmin = async subAdminInfo => {
+  const token = getToken();
   try {
-    console.log(subAdminInfo);
-    const { data } = await client.post(
-      "/admin/create",
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-          accept: "application/json",
-        },
+    const { data } = await client.post("/admin/create", subAdminInfo, {
+      headers: {
+        Authorization: "Bearer " + token,
       },
-      subAdminInfo
-    );
+    });
     return data;
   } catch (error) {
-    const { response } = error;
-
-    if (response?.data) return response.data;
-
-    return { error: error.message || error };
+    return catchError(error);
   }
 };

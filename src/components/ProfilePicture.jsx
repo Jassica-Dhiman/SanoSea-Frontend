@@ -8,7 +8,7 @@ const ProfilePicture = () => {
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState("");
   const fileInputRef = useRef();
 
-  const updateProfilePhoto = (file) => {
+  const updateProfilePhoto = file => {
     const url = URL.createObjectURL(file);
     setSelectedProfilePhoto(url);
   };
