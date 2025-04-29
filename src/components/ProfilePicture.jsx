@@ -8,7 +8,7 @@ const ProfilePicture = () => {
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState("");
   const fileInputRef = useRef();
 
-  const updateProfilePhoto = file => {
+  const updateProfilePhoto = (file) => {
     const url = URL.createObjectURL(file);
     setSelectedProfilePhoto(url);
   };
@@ -190,8 +190,8 @@ const ProfilePicture = () => {
             // value={userInfo.password}
             // onChange={handleChange}
             id="confirmPassword"
-            name="ConfirmPassword"
-            label="confirm Password"
+            name="confirmPassword"
+            label="Confirm Password"
             placeholder="Confirm Your Old Password"
             iconClass={confirmPasswordVisible ? "fa-eye-slash" : "fa-eye"}
             type={confirmPasswordVisible ? "text" : "password"}
